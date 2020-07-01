@@ -16,7 +16,6 @@ public class ApplicationTests {
 
   @Test
   public void contextLoads() {
-    System.out.println("hello world");
     System.out.println(person);
   }
 
