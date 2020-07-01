@@ -4,6 +4,7 @@ plugins {
 	id 'java'
 	id 'application'
 	id "com.google.osdetector" version "1.6.2"
+	id "io.freefair.lombok" version "5.1.0"
 }
 
 group = 'com.learnspringboot'
@@ -18,6 +19,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
@@ -29,4 +31,7 @@ application {
 
 test {
 	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+  }
 }
