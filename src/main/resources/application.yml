@@ -2,16 +2,16 @@
 #   port: 8090
 server: { port: 8090 }
 
-person:
-  # lastName: Jame
-  last-name: Jame
-  age: 18
-  boss: false
-  birth: 2017/01/01
-  maps: {k1: v1, k2: v2}
-  lists:
-    - lisi
-    - Kobe
-  dog:
-    name: dd
-    age: 2
+# person:
+#   # lastName: Jame
+#   last-name: Jame
+#   age: 18
+#   boss: false
+#   birth: 2017/01/01
+#   maps: {k1: v1, k2: v2}
+#   lists:
+#     - lisi
+#     - Kobe
+#   dog:
+#     name: dd
+#     age: 2

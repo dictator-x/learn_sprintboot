@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 // @Controller
 // @ResponseBody
-@RestController
+@RestController // == @Controller + @Controller
 public class HelloController {
 
 	@RequestMapping("/hello")
