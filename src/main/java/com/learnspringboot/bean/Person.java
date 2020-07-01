@@ -13,7 +13,7 @@ import org.springframework.validation.annotation.Validated;
 
 @Data
 @Component
-// @ConfigurationProperties(prefix = "person")
+@ConfigurationProperties(prefix = "person")
 // batch inject
 // fuzzy inject
 // support @Validated, JSR303

@@ -1,17 +1,40 @@
 # server:
 #   port: 8090
-server: { port: 8090 }
+server: { port: 8081 }
+spring:
+  profiles:
+    active: prod
+  # config:  only work in CLI
+  #   location:
+  #     /tmp/
 
-# person:
-#   # lastName: Jame
-#   last-name: Jame
-#   age: 18
-#   boss: false
-#   birth: 2017/01/01
-#   maps: {k1: v1, k2: v2}
-#   lists:
-#     - lisi
-#     - Kobe
-#   dog:
-#     name: dd
-#     age: 2
+person:
+  # lastName: Jame
+  last-name: Jame${random.uuid}
+  age: ${random.int}
+  boss: false
+  birth: 2017/01/01
+  maps: {k1: v1, k2: v2}
+  lists:
+    - lisi${person.aa:hello}
+    - Kobe
+    - ${person.bb}
+  dog:
+    name: ${person.last-name}_dd
+    age: 2
+
+server:
+  context-path: /root
+
+---
+server: { port: 8083 }
+spring:
+  profiles: dev
+
+---
+server: { port: 8080 }
+spring:
+  profiles: prod
+
+# java -jar *.jar --spring.profiles.active=dev
+# java  -Dspring.profiles.active=dev -jar *.jar
