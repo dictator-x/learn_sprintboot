@@ -3,7 +3,8 @@
 server: { port: 8090 }
 
 person:
-  lastName: Jame
+  # lastName: Jame
+  last-name: Jame
   age: 18
   boss: false
   birth: 2017/01/01

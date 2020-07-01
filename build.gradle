@@ -19,6 +19,7 @@ repositories {
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter'
   implementation 'org.springframework.boot:spring-boot-starter-web'
+  optional 'org.springframework.boot:spring-boot-configuration-processor'
 
   testImplementation('org.springframework.boot:spring-boot-starter-test') {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -35,3 +36,5 @@ test {
     events "passed", "skipped", "failed"
   }
 }
+
+compileJava.dependsOn(processResources)
