@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Example</title>
-    </head>
-    <body>
-        <p>success html</p>
-        <div th:id="${hello}" th:class="${hello}" th:text="${hello}"></div>
-    </body>
+  <head>
+    <title>Title</title>
+  </head>
+  <body>
+    <p>success html</p>
+    <div th:id="${hello}" th:class="${hello}" th:text="${hello}">Show List</div>
+    <hr>
+
+    <div th:text="${hello}"></div>
+    <div th:utext="${hello}"></div>
+    <hr>
+
+    <h4 th:each="user:${users}" th:text="${user}"></h4>
+    <hr>
+
+    <h4>
+      <span th:each="user:${users}">[[${user}]] </span>
+    </h4>
+  </body>
 </html>
