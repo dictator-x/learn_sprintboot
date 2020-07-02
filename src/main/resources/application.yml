@@ -24,7 +24,8 @@ person:
     age: 2
 
 server:
-  context-path: /root
+  # servlet:
+    # context-path: /root
   port: 8090
 
 logging:
