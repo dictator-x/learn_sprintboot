@@ -25,7 +25,7 @@ public class Application {
 		return new MyViewResolver();
 	}
 
-	private statck class MyViewResolver implements ViewResolver {
+	private static class MyViewResolver implements ViewResolver {
 
 		@Override
 		public View resolveViewName(String viewName, Locale locale) throws Exception {
