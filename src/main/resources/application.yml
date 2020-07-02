@@ -3,7 +3,7 @@
 # server: { port: 8081 }
 spring:
   profiles:
-    active: prod
+    active: dev
   # config:
   #   location:
   #     /tmp/
@@ -25,19 +25,26 @@ person:
 
 server:
   context-path: /root
+  port: 8090
 
 logging:
   level:
     com: trace
+  # file:
+  #   name: my.log
 ---
 server: { port: 8083 }
 spring:
   profiles: dev
 debug: true
+logging:
+  config: classpath:log4j2-dev.xml
 ---
 server: { port: 8080 }
 spring:
   profiles: prod
+logging:
+  config: classpath:log4j2.xml
 
 # java -jar *.jar --spring.profiles.active=dev
 # java  -Dspring.profiles.active=dev -jar *.jar
