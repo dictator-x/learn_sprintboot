@@ -11,7 +11,9 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 		Logger logger = LoggerFactory.getLogger(Application.class);
+		// trace < debug < info < warn < error
 		logger.info("Hello World...................");
+		logger.trace("Hello World...................");
 	}
 
 }

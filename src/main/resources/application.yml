@@ -26,6 +26,9 @@ person:
 server:
   context-path: /root
 
+logging:
+  level:
+    com: trace
 ---
 server: { port: 8083 }
 spring:
