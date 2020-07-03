@@ -27,6 +27,7 @@ dependencies {
   // Web dependencies.
   //access localhost: 8080/webjars/jquery/3.5.1/jquery.js
   implementation 'org.webjars:jquery:3.5.1'
+  implementation 'org.webjars:bootstrap:4.5.0'
 
   // Test dependencies.
   testImplementation('org.springframework.boot:spring-boot-starter-test') {
