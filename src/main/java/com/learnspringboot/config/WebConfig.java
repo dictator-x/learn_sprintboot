@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.LocaleResolver;
+import com.learnspringboot.component.MyLocaleResolver;
 
 @Configuration
 // @EnableWebMvc // disable all default springMVC config by springBoot.
@@ -24,5 +26,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 				registry.addViewController("/").setViewName("login");
 			}
 		};
+	}
+
+	@Bean
+	public LocaleResolver localeResolver() {
+		return new MyLocaleResolver();
 	}
 }
