@@ -40,6 +40,8 @@ logging:
 server: { port: 8083 }
 spring:
   profiles: dev
+  thymeleaf:
+    cache: false
 # debug: true
 logging:
   config: classpath:log4j2-dev.xml
