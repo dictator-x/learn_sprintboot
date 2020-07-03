@@ -30,10 +30,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 			@Override
 			public void addInterceptors(InterceptorRegistry registry) {
-				registry
-					.addInterceptor(new LoginHandlerInterceptor())
-					.addPathPatterns("/**")
-					.excludePathPatterns("/index.html", "/", "/user/login");
+				// registry
+				// 	.addInterceptor(new LoginHandlerInterceptor())
+				// 	.addPathPatterns("/**")
+				// 	.excludePathPatterns("/index.html", "/", "/user/login");
 			}
 		};
 	}

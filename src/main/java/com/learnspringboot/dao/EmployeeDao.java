@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class EmployeeDAO {
+public class EmployeeDao {
 
 	private static Map<Integer, Employee> employees = null;
 

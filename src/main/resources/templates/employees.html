@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employee list</title>
+  </head>
+  <body>
+    <p>Employee list</p>
+    <table style="width:100%">
+      <thead>
+          <th>id</th>
+          <th>name</th>
+          <th>age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="emp:${emps}">
+          <th>[[${emp.id}]]</th>
+          <th>[[${emp.name}]]</th>
+          <th>[[${emp.age}]]</th>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
