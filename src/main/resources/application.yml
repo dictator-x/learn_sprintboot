@@ -7,6 +7,8 @@ spring:
   # config:
   #   location:
   #     /tmp/
+  messages:
+    basename: i18n.login
 
 person:
   # lastName: Jame
@@ -33,6 +35,7 @@ logging:
     com: trace
   # file:
   #   name: my.log
+
 ---
 server: { port: 8083 }
 spring:
