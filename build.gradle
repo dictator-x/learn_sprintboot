@@ -18,11 +18,16 @@ repositories {
 
 dependencies {
   // Core dependencies.
-  annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+  annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
   implementation 'org.springframework.boot:spring-boot-starter'
   implementation 'org.springframework.boot:spring-boot-starter-log4j2'
   implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-  implementation 'org.springframework.boot:spring-boot-starter-web'
+
+  implementation('org.springframework.boot:spring-boot-starter-web') {
+    exclude module: 'spring-boot-starter-tomcat'
+  }
+
+  implementation 'org.springframework.boot:spring-boot-starter-jetty'
 
   // Web dependencies.
   //access localhost: 8080/webjars/jquery/3.5.1/jquery.js
