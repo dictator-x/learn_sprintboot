@@ -1,11 +1,16 @@
 package com.learnspringboot.config;
 
+import com.learnspringboot.filter.MyFilter;
+import com.learnspringboot.servlet.MyServlet;
+import com.learnspringboot.listener.MyListener;
+import java.util.Arrays;
+import org.springframework.boot.web.embedded.jetty.JettyServletWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.boot.web.server.WebServerFactoryCustomizer;
-import org.springframework.boot.web.embedded.jetty.JettyServletWebServerFactory;
-import com.learnspringboot.servlet.MyServlet;
 
 
 @Configuration
@@ -26,5 +31,19 @@ public class ServerConfig {
 	@Bean
 	public ServletRegistrationBean customizeServlet() {
 		return new ServletRegistrationBean(new MyServlet(), "/myservlet");
+	}
+
+	@Bean
+	public FilterRegistrationBean customizeFilter() {
+		FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+		registrationBean.setFilter(new MyFilter());
+		registrationBean.setUrlPatterns(Arrays.asList("/myservlet"));
+		return registrationBean;
+	}
+
+	@Bean
+	public ServletListenerRegistrationBean customizeListener() {
+		ServletListenerRegistrationBean<MyListener> registrationBean = new ServletListenerRegistrationBean(new MyListener());
+		return registrationBean;
 	}
 }
