@@ -1,6 +1,12 @@
 package com.learnspringboot;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.learnspringboot.bean.User;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.lucene.util.QueryBuilder;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
@@ -10,6 +16,8 @@ import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
@@ -20,6 +28,10 @@ import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.TermQueryBuilder;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.fetch.subphase.FetchSourceContext;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,10 +39,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import com.learnspringboot.bean.User;
-
-import java.util.Arrays;
-import java.util.List;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -139,6 +147,26 @@ public class ElasticSearchTests {
 
     BulkResponse response = client.bulk(bulkRequest, RequestOptions.DEFAULT);
     System.out.println(response.hasFailures());
+  }
+
+  @Test
+  public void testSearch() throws Exception {
+    SearchRequest request = new SearchRequest("test_index");
+    SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+    TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("name", "Jordan");
+    sourceBuilder.query(termQueryBuilder);
+    sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
+    sourceBuilder.from();
+    sourceBuilder.size();
+
+    request.source(sourceBuilder);
+
+    SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+    System.out.println(response.getHits());
+
+    for (SearchHit documentFields : response.getHits().getHits()) {
+      System.out.println(documentFields.getSourceAsMap());
+    }
   }
 
 }
