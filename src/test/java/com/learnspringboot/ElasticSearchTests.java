@@ -48,28 +48,28 @@ public class ElasticSearchTests {
   @Qualifier("esClient")
   RestHighLevelClient client;
 
-  @Test
+  //@Test
   public void testCreateIndex() throws Exception {
     CreateIndexRequest request = new CreateIndexRequest("test_index");
     CreateIndexResponse response = client.indices().create(request, RequestOptions.DEFAULT);
     System.out.println(response);
   }
 
-  @Test
+  // @Test
   public void testExistIndex() throws Exception {
     GetIndexRequest request = new GetIndexRequest("test_index");
     boolean exists = client.indices().exists(request, RequestOptions.DEFAULT);
     System.out.println(exists);
   }
 
-  @Test
+  // @Test
   public void testDeleteIndex() throws Exception {
     DeleteIndexRequest request = new DeleteIndexRequest("test_index");
     AcknowledgedResponse response = client.indices().delete(request, RequestOptions.DEFAULT);
     System.out.println(response.isAcknowledged());
   }
 
-  @Test
+  // @Test
   public void testAddDocument() throws Exception {
     User user = new User("Jordan", 19);
     IndexRequest request = new IndexRequest("test_index");
@@ -85,7 +85,7 @@ public class ElasticSearchTests {
     System.out.println(response.status());
   }
 
-  @Test
+  // @Test
   public void testIsExists() throws Exception {
     GetRequest request = new GetRequest("test_index", "1");
     request.fetchSourceContext(new FetchSourceContext(false));
@@ -95,7 +95,7 @@ public class ElasticSearchTests {
     System.out.println(exists);
   }
 
-  @Test
+  // @Test
   public void testGetDocument() throws Exception {
     GetRequest request = new GetRequest("test_index", "1");
     GetResponse response = client.get(request, RequestOptions.DEFAULT);
@@ -103,7 +103,7 @@ public class ElasticSearchTests {
     System.out.println(response);
   }
 
-  @Test
+  // @Test
   public void testUpdateDocument() throws Exception {
     UpdateRequest request = new UpdateRequest("test_index", "1");
     request.timeout("1s");
@@ -115,7 +115,7 @@ public class ElasticSearchTests {
     System.out.println(response);
   }
 
-  @Test
+  // @Test
   public void testDeleteDocument() throws Exception {
     DeleteRequest request = new DeleteRequest("test_index", "1");
     request.timeout("1s");
@@ -125,7 +125,7 @@ public class ElasticSearchTests {
 
   }
 
-  @Test
+  // @Test
   public void testBulkRequest() throws Exception {
     BulkRequest bulkRequest = new BulkRequest();
     bulkRequest.timeout("10s");
@@ -149,7 +149,7 @@ public class ElasticSearchTests {
     System.out.println(response.hasFailures());
   }
 
-  @Test
+  // @Test
   public void testSearch() throws Exception {
     SearchRequest request = new SearchRequest("test_index");
     SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
