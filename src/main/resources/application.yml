@@ -17,6 +17,10 @@ spring:
     schema:
       - classpath:sql/department.sql
 #    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
 person:
   # lastName: Jame
