@@ -21,6 +21,7 @@ public class Application {
 		// trace < debug < info < warn < error
 		// logger.info("Hello World...................");
 		logger.trace("Hello World...................");
+		System.out.println(System.getenv("aaa"));
 	}
 
 	@Bean
