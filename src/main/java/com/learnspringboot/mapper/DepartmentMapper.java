@@ -18,4 +18,7 @@ public interface DepartmentMapper {
 
     @Update("update department set departmentName=#{departmentName} where id=#{id}")
     public int updateDepartment(Department department);
+
+    @Select("select * from department where departmentName=#{departmentName}")
+    public Department getDepartmentByName(String departmentName);
 }
