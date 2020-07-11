@@ -1,11 +1,13 @@
 package com.learnspringboot;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.learnspringboot.bean.Book;
 import com.learnspringboot.bean.User;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import com.learnspringboot.repository.BookRepository;
 import org.apache.lucene.util.QueryBuilder;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkRequest;
@@ -38,6 +40,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @SpringBootTest
@@ -47,6 +50,9 @@ public class ElasticSearchTests {
   @Autowired
   @Qualifier("esClient")
   RestHighLevelClient client;
+
+  @Autowired
+  BookRepository bookRepository;
 
   //@Test
   public void testCreateIndex() throws Exception {
@@ -167,6 +173,11 @@ public class ElasticSearchTests {
     for (SearchHit documentFields : response.getHits().getHits()) {
       System.out.println(documentFields.getSourceAsMap());
     }
+  }
+
+  //@Test
+  public void test1() {
+    bookRepository.save(new Book(1, "aaa", "aaa"));
   }
 
 }
