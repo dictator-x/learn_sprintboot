@@ -26,6 +26,8 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-jdbc'
   implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
   implementation 'org.springframework.boot:spring-boot-starter-cache'
+  // will disable default cache manager.
+  implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
   runtimeOnly 'mysql:mysql-connector-java'
   testRuntimeOnly 'mysql:mysql-connector-java'
