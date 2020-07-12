@@ -23,6 +23,9 @@ spring:
     show-sql: true
   redis:
     host: 127.0.0.1
+#  mail:
+#    username: test
+#    password: test
 
 person:
   # lastName: Jame

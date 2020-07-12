@@ -28,6 +28,8 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-cache'
   // will disable default cache manager.
   implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+  implementation 'org.springframework.boot:spring-boot-starter-mail'
+  implementation 'org.springframework.boot:spring-boot-starter-security'
 
   runtimeOnly 'mysql:mysql-connector-java'
   testRuntimeOnly 'mysql:mysql-connector-java'
