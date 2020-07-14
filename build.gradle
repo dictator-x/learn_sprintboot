@@ -30,6 +30,9 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-data-redis'
   implementation 'org.springframework.boot:spring-boot-starter-mail'
   implementation 'org.springframework.boot:spring-boot-starter-security'
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
+  implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 
   runtimeOnly 'mysql:mysql-connector-java'
   testRuntimeOnly 'mysql:mysql-connector-java'

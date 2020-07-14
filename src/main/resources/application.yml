@@ -52,7 +52,11 @@ logging:
     com: trace
   # file:
   #   name: my.log
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: beans
 ---
 server: { port: 8083 }
 spring:
