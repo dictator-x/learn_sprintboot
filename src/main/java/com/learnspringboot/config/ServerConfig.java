@@ -16,17 +16,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServerConfig {
 
-	@Bean
+	// @Bean
 	// Need to set Jetty starter in build.gradle.
 	// High priority than applicatoin.yml
-	public WebServerFactoryCustomizer sevletContainerCustomizer() {
-		return new WebServerFactoryCustomizer<JettyServletWebServerFactory>() {
-			@Override
-			public void customize(JettyServletWebServerFactory factory) {
-				factory.setPort(8080);
-			}
-		};
-	}
+	// public WebServerFactoryCustomizer sevletContainerCustomizer() {
+	// 	return new WebServerFactoryCustomizer<JettyServletWebServerFactory>() {
+	// 		@Override
+	// 		public void customize(JettyServletWebServerFactory factory) {
+	// 			factory.setPort(8080);
+	// 		}
+	// 	};
+	// }
 
 	@Bean
 	public ServletRegistrationBean customizeServlet() {

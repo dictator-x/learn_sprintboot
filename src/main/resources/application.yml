@@ -45,7 +45,7 @@ person:
 server:
   # servlet:
     # context-path: /root
-  port: 8090
+  port: 8000
 
 logging:
   level:
@@ -58,7 +58,6 @@ management:
       exposure:
         include: beans
 ---
-server: { port: 8083 }
 spring:
   profiles: dev
   thymeleaf:
@@ -67,7 +66,6 @@ spring:
 logging:
   config: classpath:log4j2-dev.xml
 ---
-server: { port: 8080 }
 spring:
   profiles: prod
 logging:
