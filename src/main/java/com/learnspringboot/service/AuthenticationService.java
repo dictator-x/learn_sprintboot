@@ -7,6 +7,8 @@ import org.springframework.util.StringUtils;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.HashSet;
 
 @Service
 public class AuthenticationService {
@@ -32,7 +34,12 @@ public class AuthenticationService {
 
     private Map<String, UserDto> userMap = new HashMap<>();
     {
-        userMap.put("messi", new UserDto("1010", "messi", "123", "MESSI", "133443"));
-        userMap.put("kobe", new UserDto("1011", "kobe", "456", "KOBE", "144553"));
+        Set<String> authorities1 = new HashSet<String>();
+        authorities1.add("p1");
+        Set<String> authorities2 = new HashSet<String>();
+        authorities2.add("p2");
+
+        userMap.put("messi", new UserDto("1010", "messi", "123", "MESSI", "133443", authorities1));
+        userMap.put("kobe", new UserDto("1011", "kobe", "456", "KOBE", "144553", authorities2));
     }
 }

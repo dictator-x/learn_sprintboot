@@ -39,9 +39,23 @@ public class SessionController {
         return userDto.getUsername() + " Login Success!!";
     }
 
-    @GetMapping("/isSessioned")
+    @GetMapping("/r/r1")
     @ResponseBody
-    public String checkSessioned(HttpSession httpSession) {
+    public String checkSessioned1(HttpSession httpSession) {
+        String fullname = null;
+        Object object = httpSession.getAttribute(UserDto.SESSION_USER_KEY);
+        if ( object == null ) {
+            fullname = "no session";
+        } else {
+            UserDto userDto = (UserDto) object;
+            fullname = userDto.getUsername();
+        }
+        return fullname;
+    }
+
+    @GetMapping("/r/r2")
+    @ResponseBody
+    public String checkSessioned2(HttpSession httpSession) {
         String fullname = null;
         Object object = httpSession.getAttribute(UserDto.SESSION_USER_KEY);
         if ( object == null ) {

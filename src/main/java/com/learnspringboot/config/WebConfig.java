@@ -2,6 +2,7 @@ package com.learnspringboot.config;
 
 import com.learnspringboot.component.MyLocaleResolver;
 import com.learnspringboot.component.LoginHandlerInterceptor;
+import com.learnspringboot.interceptor.SimpleAuthenticationInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -31,10 +32,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 			@Override
 			public void addInterceptors(InterceptorRegistry registry) {
-				// registry
-				// 	.addInterceptor(new LoginHandlerInterceptor())
-				// 	.addPathPatterns("/**")
-				// 	.excludePathPatterns("/index.html", "/", "/user/login");
+				registry
+					.addInterceptor(new SimpleAuthenticationInterceptor())
+					.addPathPatterns("/r/**");
+					// .excludePathPatterns("/index.html", "/", "/user/login");
 			}
 		};
 	}
