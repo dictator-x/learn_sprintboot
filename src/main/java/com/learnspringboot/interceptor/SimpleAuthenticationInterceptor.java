@@ -18,6 +18,7 @@ public class SimpleAuthenticationInterceptor implements HandlerInterceptor {
         Object object = request.getSession().getAttribute(UserDto.SESSION_USER_KEY);
         if ( object == null ) {
             writeContent(response, "Please Login");
+            return false;
         }
 
         UserDto userDto = (UserDto) object;
@@ -29,6 +30,8 @@ public class SimpleAuthenticationInterceptor implements HandlerInterceptor {
             return true;
         }
 
+        writeContent(response, "You do not have right to access");
+
         return false;
     }
 
@@ -36,6 +39,7 @@ public class SimpleAuthenticationInterceptor implements HandlerInterceptor {
         PrintWriter writer = response.getWriter();
         writer.print(info);
         writer.close();
-        response.resetBuffer();
+        // Do not reset buffer at here it will creates an exception in jetty.
+        // response.resetBuffer();
     }
 }
