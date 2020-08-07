@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>User Login</title>
+    </head>
+    <body>
+        <form th:action="@{/doSession}" method="post">
+            Username: <input type="text" name="username" value="messi"/><br></br>
+            Password: <input type="text" name="password" value="123"/><br></br>
+            <input type="submit" name="Login"/>
+        </form>
+    </body>
+</html>
